@@ -1,0 +1,16 @@
+# Arquivos compilados
+*.class
+
+# Pastas de saída e compilação
+bin/
+build/
+
+# Configurações específicas do Eclipse IDE
+.metadata/
+.settings/
+.classpath
+.project
+.recommenders/
+
+# Arquivos de registro
+*.log
