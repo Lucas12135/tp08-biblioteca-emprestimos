@@ -22,7 +22,7 @@ public class Principal {
 			
 			switch(opcao) {
 			case 1: CadastrarLivro(); break;
-			case 2: /* Listagem do acervo */ break;
+			case 2: ListarAcervo(); break;
 			case 3: /* Busca por título */ break;
 			case 0: System.out.println("Encerrando..."); break;
 			default: System.out.println("Opcao invalida!");
@@ -47,6 +47,8 @@ public class Principal {
 	}
 	
 	public static void CadastrarLivro() {
+		entrada.nextLine(); // Limpa o buffer da entrada
+		
 		String nome, nomeAutor;
 		
 		do {
@@ -73,5 +75,28 @@ public class Principal {
 		
 		situacao.add("disponivel");
 		System.out.println("\nLivro adicionado com Sucesso!");
+	}
+	
+	public static void ListarAcervo() {
+	    if (livros.isEmpty()) {
+	        System.out.println("\nO acervo está vazio no momento.");
+	        return;
+	    }
+
+	    System.out.println("\n┌────────────────────────────────────────────────────────────┐");
+	    System.out.println("│                           ACERVO                           │");
+	    System.out.println("├────────────────────────┬─────────────────────┬─────────────┤");
+	    System.out.printf("│ %-22s │ %-19s │ %-11s │%n", "TÍTULO", "AUTOR", "STATUS");
+	    System.out.println("├────────────────────────┼─────────────────────┼─────────────┤");
+
+	    for (int i = 0; i < livros.size(); i++) {
+	        System.out.printf("│ %-22.22s │ %-19.19s │ %-11s │%n", 
+	            livros.get(i), 
+	            autor.get(i), 
+	            situacao.get(i)
+	        );
+	    }
+
+	    System.out.println("└────────────────────────┴─────────────────────┴─────────────┘\n");
 	}
 }
