@@ -45,9 +45,9 @@ public class Principal {
 	}
 	
 	public static void exibirCabecalho() {
-		System.out.println("==============================");
-		System.out.println("       NOME DO SISTEMA        ");
-		System.out.println("==============================");
+		System.out.println("**********************************");
+		System.out.println("*      SISTEMA DE BIBLIOTECA     *");
+		System.out.println("**********************************");
 	}
 	
 	public static void exibirMenu() {
