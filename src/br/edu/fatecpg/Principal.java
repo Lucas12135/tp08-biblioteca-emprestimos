@@ -8,6 +8,8 @@ public class Principal {
 	static Scanner entrada = new Scanner(System.in);
 	static ArrayList<String> leitor = new ArrayList<>();
 	static ArrayList<String> livros = new ArrayList<>();
+	static ArrayList<String> situacao = new ArrayList<>();
+	static ArrayList<String> autor = new ArrayList<>();
 	
 	public static void main(String[] args) {
 		int opcao;
@@ -69,15 +71,19 @@ public class Principal {
 		
 		System.out.print("\nDigite um livro que você deseja pegar: ");
 		String emprestimo = entrada.nextLine();
+		if (situacao.get(livros.indexOf(emprestimo)) == "emprestado") {
+			System.out.println("Este livro não está disponivel para emprestimo.");
+			return;
+		}
 		
 		if(livros.contains(emprestimo)) {
-			System.out.print("\nO livro " + emprestimo + " esta no acervo de livros, deseja pega-lo? ('y' para sim, 'n' para não): ");
+			System.out.print("\nO livro " + emprestimo + ", do autor: " + autor.get(livros.indexOf(emprestimo)) + ", esta no acervo de livros, deseja pega-lo? ('y' para sim, 'n' para não): ");
 			String confirm = entrada.nextLine();
 			
 			
 			if ("y".equalsIgnoreCase(confirm)) {
 				System.out.println("Livro emprestado com sucesso!");
-				livros.remove(emprestimo);
+				situacao.set(livros.indexOf(emprestimo), "emprestado");
 			} else {
 				System.out.println("Livro não foi emprestado.");
 			}
