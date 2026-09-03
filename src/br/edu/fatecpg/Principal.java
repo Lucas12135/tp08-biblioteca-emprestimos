@@ -11,6 +11,7 @@ public class Principal {
 	static ArrayList<String> situacao = new ArrayList<>();
 	static ArrayList<String> autor = new ArrayList<>();
 	
+	
 	public static void main(String[] args) {
 		int opcao;
 		do {
@@ -26,6 +27,9 @@ public class Principal {
 			case 2: /* funcionalidade do Desenvolvedor B */ break;
 			case 4:
 				exibirEmprestimo();
+			break;
+			case 5:
+				exibirDevolucao();
 			break;
 				
 			case 0: System.out.println("Encerrando..."); break;
@@ -90,6 +94,58 @@ public class Principal {
 			
 		} else {
 			System.out.println("Esse livro não existe no acervo de livros");
+		}
+	}
+	
+	public static void exibirDevolucao() {
+		boolean existe = false;
+		if(leitor.isEmpty()) {
+			System.out.println("Não há nenhum aluno cadastrado");
+			return;
+		}
+		
+		if (livros.isEmpty()) {
+			System.out.println("Não há livros no acervo");
+			return;
+		}
+		
+		System.out.println("Insira seu nome: ");
+		String nome = entrada.nextLine();
+		if (leitor.contains(nome)) {
+			System.out.println("Nome valido, prossiga.\n");
+		} else {
+			System.out.println("Nome invalido.");
+			return;
+		}
+		
+		System.out.println("------------- Livros para Devolução -------------");
+		for(var i = 0; i < livros.size(); i++) {
+			if(situacao.get(i) == "emprestado") {
+				existe = true;
+				System.out.println("Livro: " + livros.get(i) + " | Autor: " + autor.get(i));
+			}
+		}
+		
+		if (!existe) {
+			System.out.println("Não há livros para devolução.\n");
+			return;
+		}
+		
+		System.out.print("Você deseja devolver qual livro?: ");
+		String devo = entrada.nextLine();
+		
+		if(livros.contains(devo) && situacao.get(livros.indexOf(devo)) == "emprestado") {
+			System.out.print("\nVocê deseja devolver o livro " + devo + ", do autor: " + autor.get(livros.indexOf(devo)) + "? ('y' para sim, 'n' para não): ");
+			String confirm = entrada.nextLine();
+			
+			if ("y".equalsIgnoreCase(confirm)) {
+				System.out.println("Livro devolvido com sucesso!");
+				situacao.set(livros.indexOf(devo), "disponivel");
+			} else {
+				System.out.println("Livro não foi devolvido.");
+			}
+		} else {
+			System.out.println("Esse livro não existe e/ou não está disponivel para devolução.");
 		}
 	}
 }
