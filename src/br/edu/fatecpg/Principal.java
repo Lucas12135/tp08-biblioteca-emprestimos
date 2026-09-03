@@ -40,6 +40,9 @@ public class Principal {
 			case 6:
 				exibirRelatorio();
 			break;
+			case 7:
+				CadastrarLeitor();
+			break;
 			case 0: 
 				System.out.println("Encerrando..."); 
 			break;
@@ -65,12 +68,25 @@ public class Principal {
 		System.out.println("4 - Emprestimo de Livro");
 		System.out.println("5 - Devoluçao");
 		System.out.println("6 - Relatório do Acervo");
+		System.out.println("7 - Cadastrar Leitor");
 		System.out.println("0 - Sair");
+	}
+	
+	public static void CadastrarLeitor() {
+		entrada.nextLine(); // Limpa o buffer da entrada
+		
+		System.out.println("Digite o nome do Leitor:");
+		String nmLeitor = entrada.nextLine();
+		if(nmLeitor == "") {
+			System.out.println("Digite um nome!");
+		} else {
+			leitor.add(nmLeitor);
+		}
 	}
 	
 	public static void exibirEmprestimo() {
 		if(leitor.isEmpty()) {
-			System.out.println("Não há nenhum aluno cadastrado");
+			System.out.println("Não há nenhum leitor cadastrado");
 			return;
 		}
 		else if (livros.isEmpty()) {
@@ -115,7 +131,7 @@ public class Principal {
 	public static void exibirDevolucao() {
 		boolean existe = false;
 		if(leitor.isEmpty()) {
-			System.out.println("Não há nenhum aluno cadastrado");
+			System.out.println("Não há nenhum leitor cadastrado");
 			return;
 		}
 		

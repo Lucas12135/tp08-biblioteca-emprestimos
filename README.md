@@ -2,7 +2,7 @@
 
 ## Descrição do Sistema
 
-Este é um sistema de biblioteca simples desenvolvido em Java. O programa roda diretamente no console e permite o cadastro de livros e autores, listagem de acervo em formato de tabela alinhada, busca de livros por título de forma case-insensitive, efetuar empréstimos, efetuar devoluções, e geração de relatórios da situação do acervo. O sistema utiliza ArrayList para o gerenciamento dinâmico dos dados.
+Este é um sistema de biblioteca simples desenvolvido em Java. O programa roda diretamente no console e permite o cadastro de livros e seus autores, cadastro de leitores, listagem de acervo em formato de tabela alinhada, busca de livros por título de forma case-insensitive, efetuar empréstimos, efetuar devoluções, e geração de relatórios da situação do acervo. O sistema utiliza ArrayList para o gerenciamento dinâmico dos dados.
 
 ## Integrantes
 
@@ -39,7 +39,7 @@ Este é um sistema de biblioteca simples desenvolvido em Java. O programa roda d
 4. Execute o programa
 
 ```bash
-    java br/edu/fatecpg/Principal
+    java br.edu.fatecpg.Principal
 ```
 
 (obs: Para executar no Eclipse é só importar o projeto para dentro da IDE e clicar no botão **Run**)
@@ -54,6 +54,7 @@ Configuração inicial do repositório Git e GitHub.
 Implementação do cadastro de livros com validações de campos vazios e duplicados.
 Implementação da listagem do acervo.
 Implementação da busca por título de livro.
+Implementação do cadastro de leitores.
 
 ### Desenvolvedor B (Matheus Pereira) - Branch: feature/emprestimo-devolucao
 
