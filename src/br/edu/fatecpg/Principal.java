@@ -23,7 +23,7 @@ public class Principal {
 			switch(opcao) {
 			case 1: CadastrarLivro(); break;
 			case 2: ListarAcervo(); break;
-			case 3: /* Busca por título */ break;
+			case 3: PesquisarLivro(); break;
 			case 0: System.out.println("Encerrando..."); break;
 			default: System.out.println("Opcao invalida!");
 			}
@@ -83,20 +83,53 @@ public class Principal {
 	        return;
 	    }
 
-	    System.out.println("\n┌────────────────────────────────────────────────────────────┐");
-	    System.out.println("│                           ACERVO                           │");
-	    System.out.println("├────────────────────────┬─────────────────────┬─────────────┤");
-	    System.out.printf("│ %-22s │ %-19s │ %-11s │%n", "TÍTULO", "AUTOR", "STATUS");
-	    System.out.println("├────────────────────────┼─────────────────────┼─────────────┤");
+	    System.out.println("\n┌───────────────────────────────────────────────────────────────────┐");
+	    System.out.println("│                             ACERVO                                │");
+	    System.out.println("├──────┬────────────────────────┬─────────────────────┬─────────────┤");
+	    System.out.printf("│ %-4s │ %-22s │ %-19s │ %-11s │%n", "ID", "TÍTULO", "AUTOR", "STATUS");
+	    System.out.println("├──────┼────────────────────────┼─────────────────────┼─────────────┤");
 
 	    for (int i = 0; i < livros.size(); i++) {
-	        System.out.printf("│ %-22.22s │ %-19.19s │ %-11s │%n", 
+	        System.out.printf("│ %-4d │ %-22.22s │ %-19.19s │ %-11s │%n", 
+	        	i,
 	            livros.get(i), 
 	            autor.get(i), 
 	            situacao.get(i)
 	        );
 	    }
 
-	    System.out.println("└────────────────────────┴─────────────────────┴─────────────┘\n");
+	    System.out.println("└──────┴────────────────────────┴─────────────────────┴─────────────┘\n");
+	}
+	
+	public static void PesquisarLivro() {
+	    entrada.nextLine(); // Limpa o buffer da entrada
+	    
+	    if(livros.isEmpty()) {
+	    	System.out.println("\nO acervo está vazio no momento.");
+	    	return;
+	    }
+	    
+	    System.out.print("\nDigite o título para pesquisar: ");
+	    String busca = entrada.nextLine().toLowerCase();
+
+	    boolean encontrado = false;
+
+	    System.out.println("\n--- RESULTADO DA BUSCA ---");
+
+	    for (int i = 0; i < livros.size(); i++) {
+	        if (livros.get(i).toLowerCase().contains(busca)) {
+	            System.out.printf("ID: %d | Livro: %s | Autor: %s | Status: %s%n", 
+	                i, livros.get(i), autor.get(i), situacao.get(i)
+	            );
+	            
+	            encontrado = true;
+	        }
+	    }
+
+	    if (!encontrado) {
+	        System.out.println("Nenhum livro encontrado com esse título.");
+	    }
+	    
+	    System.out.println("--------------------------\n");
 	}
 }
