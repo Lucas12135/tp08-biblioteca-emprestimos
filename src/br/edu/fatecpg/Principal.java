@@ -21,7 +21,7 @@ public class Principal {
 			opcao = entrada.nextInt();
 			
 			switch(opcao) {
-			case 1: /* Cadastro de livro */ break;
+			case 1: CadastrarLivro(); break;
 			case 2: /* Listagem do acervo */ break;
 			case 3: /* Busca por título */ break;
 			case 0: System.out.println("Encerrando..."); break;
@@ -44,5 +44,34 @@ public class Principal {
 		System.out.println("3 - Buscar por título");
 		System.out.println("0 - Sair");
 		System.out.print("Escolha: ");
+	}
+	
+	public static void CadastrarLivro() {
+		String nome, nomeAutor;
+		
+		do {
+			System.out.print("\nDigite o nome do Livro: ");
+			nome = entrada.nextLine();
+			if(nome == "") {
+				System.out.println("Digite um nome!");
+			} else if(livros.contains(nome)) {
+				System.out.println("Esse livro já existe no acervo");
+			} else {
+				livros.add(nome);
+			}
+		} while (nome == "");
+		
+		do {
+			System.out.print("\nDigite o nome do Autor: ");
+			nomeAutor = entrada.nextLine();
+			if(nomeAutor == "") {
+				System.out.println("Digite um nome!");
+			} else {
+				autor.add(nomeAutor);
+			}
+		} while (nomeAutor == "");
+		
+		situacao.add("disponivel");
+		System.out.println("\nLivro adicionado com Sucesso!");
 	}
 }
