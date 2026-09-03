@@ -12,6 +12,7 @@ public class Principal {
 	static ArrayList<String> autor = new ArrayList<>();
 	
 	
+	
 	public static void main(String[] args) {
 		int opcao;
 		do {
@@ -30,6 +31,9 @@ public class Principal {
 			break;
 			case 5:
 				exibirDevolucao();
+			break;
+			case 6:
+				exibirRelatorio();
 			break;
 				
 			case 0: System.out.println("Encerrando..."); break;
@@ -147,5 +151,20 @@ public class Principal {
 		} else {
 			System.out.println("Esse livro não existe e/ou não está disponivel para devolução.");
 		}
+	}
+	
+	public static void exibirRelatorio() {
+		if (livros.isEmpty()) {
+			System.out.println("Não há livros no acervo");
+			return;
+		}
+		
+		System.out.println("------------- Relatório de Situação do Acervo -------------");
+		for(var i = 0; i < livros.size(); i++) {
+			System.out.println("Livro: " + livros.get(i) + " | Autor: " + autor.get(i) + " | Disponibilidade: " + situacao.get(i).toUpperCase());
+		}
+		
+		System.out.println("Quantidade de Livros: " + livros.size());
+		
 	}
 }
